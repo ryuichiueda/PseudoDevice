@@ -1,0 +1,29 @@
+This code return the doubled number of an input number.
+This pseudo device will work on Ubuntu.
+
+* An example of use
+
+ueda@remote:~/BaiBaiDevice$ make
+ueda@remote:~/BaiBaiDevice$ make install
+ueda@remote:~/BaiBaiDevice$ ls -l /dev/baibai 
+crw-rw-rw- 1 root root 291, 0  3月 16 10:05 /dev/baibai
+ueda@remote:~/BaiBaiDevice$ echo 111 > /dev/baibai 
+ueda@remote:~/BaiBaiDevice$ cat /dev/baibai 
+222
+ueda@remote:~/BaiBaiDevice$ make uninstall
+ueda@remote:~/BaiBaiDevice$ ls -l /dev/baibai 
+ls: cannot access /dev/baibai: No such file or directory
+
+* Examined environment
+
+ueda@remote:~/BaiBaiDevice$ uname -a
+Linux remote 3.2.0-53-generic #81-Ubuntu SMP Thu Aug 22 21:01:03 UTC 2013 x86_64 x86_64 x86_64 GNU/Linux
+
+* References
+
+- http://homepage3.nifty.com/rio_i/lab/driver24/00201chardev.html 
+- http://www.devdrv.co.jp/linux/kernel26-makefile.htm 
+- http://ledyba.org/2010/09/08233725.php
+
+* This sample can be distributed under GNU GPL.
+
