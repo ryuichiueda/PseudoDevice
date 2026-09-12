@@ -14,7 +14,7 @@ obj-m:= logger.o
 clean-files := *.o *.ko *.mod.[co] *~
 
 install: all
-	sudo mknod /dev/logger c 0x0123 0
+	sudo mknod /dev/logger c 333 0
 	sudo chmod 0666 /dev/logger
 	sudo insmod ./logger.ko
  
