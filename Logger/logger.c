@@ -12,12 +12,10 @@ static int major = 333;
 
 static ssize_t logger_write(struct file* filp, const char* buf, size_t count, loff_t* pos)
 {
-    char buffer[256] = {0};
-    long len = strncpy_from_user(buffer, buf, sizeof(char)*256);
-    if (0 < len && len < 256) {
-	buffer[len] = '\0';
-    	printk( KERN_INFO "receive: %s\n", buffer);
-    }
+    char recv[count+1];
+    long len = strncpy_from_user(recv, buf, count);
+    recv[count] = '\0';
+    printk( KERN_INFO "receive: %s (%ld bytes)\n", recv, len);
     return len;
 }
 
@@ -28,11 +26,11 @@ static struct file_operations fops = {
 
 int init_module(void) {
     if(register_chrdev(major, "logger", &fops)) {
-    	printk( KERN_INFO "%s : register_chrdev failed\n", msg );
+    	printk( KERN_INFO "%s: register_chrdev failed\n", msg );
         return -EBUSY;
     }
 
-    printk(KERN_INFO "%s is loaded. major:%d\n", msg, major);
+    printk(KERN_INFO "%s: loaded into kernel. major:%d\n", msg, major);
     return 0;
 }
 
