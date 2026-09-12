@@ -12,12 +12,12 @@ static int major = 333;
 
 static ssize_t logger_write(struct file* filp, const char* buf, size_t count, loff_t* pos)
 {
-    char buffer[256];
+    char buffer[256] = {0};
     long len = strncpy_from_user(buffer, buf, sizeof(char)*256);
-    if(len < 0)
-        return len;
-
-    printk( KERN_INFO "receive: %s\n", buffer);
+    if (0 < len && len < 256) {
+	buffer[len] = '\0';
+    	printk( KERN_INFO "receive: %s\n", buffer);
+    }
     return len;
 }
 

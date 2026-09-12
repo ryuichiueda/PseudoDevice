@@ -19,5 +19,5 @@ install: all
 	sudo insmod ./logger.ko
  
 uninstall:
-	sudo rmmod ./logger
+	sudo rmmod logger
 	sudo rm -f /dev/logger
