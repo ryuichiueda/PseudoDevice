@@ -6,15 +6,13 @@ MODULE_AUTHOR("Ryuichi Ueda");
 MODULE_DESCRIPTION("minimum kernel object");
 MODULE_LICENSE("GPL");
 
-static char* msg = "module [simple_ko.o]";
+char* msg = "module [simple_ko.o]";
 
-int init_module(void)
-{
+int init_module(void) {
     printk( KERN_INFO "%s : loaded into kernel\n", msg );
     return 0;
 }
 
-void cleanup_module(void)
-{
+void cleanup_module(void) {
     printk( KERN_INFO "%s : removed from kernel\n", msg );
 }
