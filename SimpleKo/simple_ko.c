@@ -1,4 +1,4 @@
-//SPDX-FileCopyrightText: 2026 Ryuichi Ueda ryuichiueda@gmail.com
+//SPDX-FileCopyrightText: 2026 Ryuichi Ueda <ryuichiueda@gmail.com>
 //SPDX-License-Identifier: GPL-2.0-only
 #include <linux/module.h>
 
@@ -6,7 +6,7 @@ MODULE_AUTHOR("Ryuichi Ueda");
 MODULE_DESCRIPTION("minimum kernel object");
 MODULE_LICENSE("GPL");
 
-static char* msg = "module [baibai.o]";
+static char* msg = "module [simple_ko.o]";
 
 int init_module(void)
 {
